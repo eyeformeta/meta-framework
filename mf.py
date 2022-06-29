@@ -26,7 +26,7 @@ am= {
                         # '',
     ],
     'examples': [
-                        'mf [ fi -r + test - { path:bk, fo:foo bar } -out meta ] [ db -save fi-meta.db ]',
+                        'python3 mf.py [ fi -r + test - { path:bk, fo:foo bar } -out meta ] [ db -save fi-meta.db ]',
                         '',
     ],
     'columns': [
@@ -54,19 +54,19 @@ def pr(*args,p=None,c=None,pad=3,g=None,end=None,pvs=None,pv=None,json=None):
     string=' '.join(args)
     print(string)
 
-#--> start#> dot
+#--> start#> python2 compatability
 class dot:
     def __init__(self): pass
 _mf=dot()
 _mf.cl=dot()
 _mf.v=dot()
-#--> end#> dot
+#--> end#> python2 compatability
 
 class Code:
     """docstring for Code"""
     def __init__(self): pass
     def index( self, code, i=0, esc='\\', n='', v=True,r=False,both=True, sort=True, isArg=False ):
-        if isArg: a_='-'
+        if isArg: a_='-+'
         else: a_=''
         def _sort(sort,dic):
             if not sort: return dic;
@@ -251,8 +251,14 @@ class Code:
                         if s==at:
                             return _sort(sort,index)
         return _sort(sort,index)
-_mf.cl.code=Code()
 #--> end#> class Code
+
+#--> start#> python2 compatability
+_mf.cl.code=Code()
+#--> end#> python2 compatability
+
+# class String:
+#     def 
 
 class Terminal:
     """docstring for Terminal"""
@@ -275,6 +281,54 @@ class Terminal:
                     i=self.index[i]+1
             else: break
         return self
+    def drill(self,cmd):
+        if type(cmd) == int:
+            if cmd < len(self.ea): cmd=self.ea[cmd]
+            else: return None
+        pass
+        am=''
+        cmd = cmd.replace('\t','    ')
+        while cmd.startswith(' '): cmd=cmd[1:]
+        while cmd.endswith(' '): cmd=cmd[:-1]
+        if cmd.startswith('{'): cmd=cmd[1:];am='{}';
+        if cmd.endswith('}'): cmd=cmd[:-1]
+        if cmd.startswith('['): cmd=cmd[1:];am='[]';
+        if cmd.endswith(']'): cmd=cmd[:-1]
+        while cmd.startswith(' '): cmd=cmd[1:]
+        while cmd.endswith(' '): cmd=cmd[:-1]
+        # if am == '{}':
+
+        index=_mf.cl.code.index(cmd, isArg=True)
+        # pr(index)
+        ea=[]
+        
+        until=-1
+        for i, c in enumerate(cmd):
+            if until < i:
+                if i < len(cmd):
+                    if i in index:
+                        sub=cmd[i:index[i]+1]
+                        if sub:
+                            ea.append(sub)
+                        if cmd[i] == '{':
+                            until=index[i]+1
+                            pr(self.drill(cmd[i:until]))
+
+        # i=-1
+        # while True:
+        #     print(i)
+        #     i+=1
+        #     # if i in spent: i+=1
+        #     if i < len(cmd):
+        #         if i in index:
+        #             sub=cmd[i:index[i]+1]
+        #             ea.append(sub)
+        #             i=index[i]+1
+        #     else: break
+        return ea
+
+
+
 #--> end#> class Terminal
 
 class Modules:
@@ -283,6 +337,8 @@ class Modules:
 #--> end#> class Modules
 _mf.v.terminal=' '.join(argv)
 do=Terminal(_mf.v.terminal).top(0).ea
+# do=Terminal(_mf.v.terminal).top(0).drill(0)
+# do=Terminal('[ stuff ]').drill(do[0])
 # pr(do)
 for x in do:
     pr(x)
