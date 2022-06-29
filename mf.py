@@ -1,3 +1,5 @@
 #!/usr/bin/python3
 
-print('started')
+from sys import argv
+
+print(argv)
