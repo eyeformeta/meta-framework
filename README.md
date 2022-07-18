@@ -17,8 +17,11 @@ ___
 - other tool
    - website management
    - backups
-
-### edits exif but uses json files internally
+~~~
+edits exif but uses json files internally
+~~~
+___
+### misc features
 - abbreviation features
    - switches
       - use: -save or -s
@@ -27,8 +30,6 @@ ___
       - when specifying the columns you want
          - use: -sort modified or -s m
          - use: -columns name modified 
-
-
 ___
 ## examples
 ~~~sh
