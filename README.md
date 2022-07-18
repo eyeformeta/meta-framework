@@ -37,17 +37,19 @@ ___
 mf m docs  # save bookmark to current folder
 mf b docs  # takes you to the the previously specified folder
 
-mf  [ fi -r + *.doc -ago 1w ] # colorized list of path (full or relative ) and total
-mf  [ fi -r -type doc -ago 1w  ] # .doc .docx .pdf etc
+## a look at one of the tools
+mf  [ fi -r + *.doc -ago 1w ] # list of paths (full or relative path) and totals
 mf  [ fi -r -t image -ago 1h  ] # .jpg .png .bmp etc
 mf  [ fi -r -t graphic -ago 10min  ] # .psd .tif
+mf  [ paste ] [ fi + *.py -ago 1d  ] # paste from clipboard and search within results
+mf  [ fi -r -type doc -ago 1w  ] # .doc .docx .pdf etc that were edited 1 within a week
+mf  [ fi -type doc -scan quick ] # scans auto indexes
+mf  [ fi -type doc -ago 10min -scan smart ] # scans indexes and most used bookmark folders
+mf  [ fi -type doc -ago 10min -scan deep ] # scans indexes and ALL bookmarks
+mf  [ fi -type doc -ago 10min -scan index promiscuous *.db paths.txt ] # or scan all you want
 
 ## misc examples
 mf  [ site -f index.php -upload ]
-mf  [ fi -type doc -ago 10min -scan quick ] # scans auto indexes
-mf  [ fi -type doc -ago 10min -scan smart ] # scans indexes and most used bookmarks
-mf  [ fi -type doc -ago 10min -scan deep ] # scans indexes and ALL bookmarks
-mf  [ fi -type doc -ago 10min -scan index promiscuous *.db paths.txt ] # or scan all you want
 mf  [ fi -r + *.py - { path:bk, fo:foo bar } -save file_meta.json file_meta.db ]
 mf  [ db -f file_meta.db + *.psd ]
 mf  [ traverse -f file_meta.json -index ]
@@ -57,9 +59,9 @@ mf  [ traverse -f spells.json -search classes~Sorcerer "name=Chill Touch" -field
 # help examples
 ## notice the location of the ?
 mf  [ fi ? ] # help about module
-mf  [ fi -type graphic -ago 10min -scan smart ? ] # help on scan:smart and instructions how to add folders to the index
-mf  [ fi -type graphic -ago 10min -scan ? ] # help about -scan switch
 mf  [ fi ? -type graphic -ago 10min -scan smart ] # help about all selected switches
+mf  [ fi -type graphic -ago 10min -scan ? ] # help about -scan switch
+mf  [ fi -type graphic -ago 10min -scan smart ? ] # help on -scan smart and instructions how to add folders to the index
 
 
 ~~~
