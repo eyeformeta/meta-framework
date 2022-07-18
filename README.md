@@ -4,7 +4,6 @@ ___
 ### tested on: windows mac ubuntu centos wsl powershell
 - meta-framing
 - log tool w/cron
-   -
 - meta management (exif and json)
 - misc tools
 ~~~
