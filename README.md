@@ -1,13 +1,13 @@
 ___
 # meta mgt and meta-framing framework
 ## mf minimalist/modular tool
-### tested on: windows mac ubuntu centos wsl powershell
 - meta-framing
 - log tool w/cron
 - meta management (exif and json)
 - misc tools
+### tested on: windows mac ubuntu centos wsl powershell
 ~~~
-rewriting another project of mine on: github.com/rightthumb
+rewriting another project of mine with 2000 modules: github.com/rightthumb
 ~~~
 ___
 ## drill down a little
