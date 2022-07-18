@@ -1,6 +1,6 @@
 ___
 # meta mgt and meta-framing framework
-## a mf cool minimalist/modular tool
+## mf cool minimalist/modular tool
 ### tested on: windows mac ubuntu centos wsl powershell
 - meta-framing
 - log tool w/cron
