@@ -32,7 +32,7 @@ ___
          - use: -columns name modified 
 ___
 ## examples
-~~~sh
+~~~
 ## bookmarks
 mf m docs  # save bookmark to current folder
 mf b docs  # takes you to the the previously specified folder
